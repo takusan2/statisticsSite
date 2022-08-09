@@ -1,23 +1,25 @@
-import { Box, Flex } from '@chakra-ui/react'
-import { ReactNode } from 'react'
-import { Head } from './Head'
+import { Box } from "@chakra-ui/react";
+import { ReactNode } from "react";
+import { Footer } from "./Footer";
+import { Head } from "./Head";
 
-import Header from './Header'
+import Header from "./Header";
 
 type DefaultLayoutProps = {
-  children: ReactNode
-}
+  children: ReactNode;
+};
 
 const DefaultLayout = ({ children }: DefaultLayoutProps) => {
   return (
-    <Flex flexDir="column" flex={1} fontSize="20px">
+    <Box fontSize="20px" boxSizing="border-box" minH="0" h="auto">
       <Head />
       <Header />
-      <Box overflowY="scroll" m="2%">
+      <Box overflowY="scroll" m="2%" pb="50">
         {children}
       </Box>
-    </Flex>
-  )
-}
+      <Footer />
+    </Box>
+  );
+};
 
-export default DefaultLayout
+export default DefaultLayout;

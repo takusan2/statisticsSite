@@ -1,25 +1,23 @@
 import {
-  AddIcon,
+  CalendarIcon,
   CloseIcon,
   EditIcon,
-  ExternalLinkIcon,
   HamburgerIcon,
-  RepeatIcon,
-} from '@chakra-ui/icons'
+} from "@chakra-ui/icons";
 import {
   IconButton,
   Menu,
   MenuButton,
   MenuItem,
   MenuList,
-} from '@chakra-ui/react'
-import { useState } from 'react'
+} from "@chakra-ui/react";
+import { useState } from "react";
 
 const MenuBar = () => {
-  const [isOpen, setIsOpen] = useState(false)
+  const [isOpen, setIsOpen] = useState(false);
   const toggleIsOpen = () => {
-    setIsOpen(!isOpen)
-  }
+    setIsOpen(!isOpen);
+  };
   return (
     <Menu closeOnBlur={false}>
       <MenuButton
@@ -30,25 +28,17 @@ const MenuBar = () => {
         color="black"
       />
       <MenuList>
-        <MenuItem icon={<AddIcon />} command="⌘T" onClick={toggleIsOpen}>
-          New Tab
-        </MenuItem>
-        <MenuItem
-          icon={<ExternalLinkIcon />}
-          command="⌘N"
-          onClick={toggleIsOpen}
-        >
-          New Window
-        </MenuItem>
-        <MenuItem icon={<RepeatIcon />} command="⌘⇧N" onClick={toggleIsOpen}>
-          Open Closed Tab
-        </MenuItem>
+        <a href="/">
+          <MenuItem icon={<CalendarIcon />} onClick={toggleIsOpen}>
+            Home
+          </MenuItem>
+        </a>
         <MenuItem icon={<EditIcon />} command="⌘O" onClick={toggleIsOpen}>
           Open File...
         </MenuItem>
       </MenuList>
     </Menu>
-  )
-}
+  );
+};
 
-export default MenuBar
+export default MenuBar;

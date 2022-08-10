@@ -17,6 +17,7 @@ const DefaultLayout = ({ children }: DefaultLayoutProps) => {
       boxSizing="border-box"
       minH="100vh"
       pb="100"
+      fontSize="20px"
     >
       <Head />
       <Header />

@@ -24,3 +24,7 @@ a {
     background: black;
   }
 }
+table {
+  border-collapse: collapse;
+  border: 1px black solid;
+}

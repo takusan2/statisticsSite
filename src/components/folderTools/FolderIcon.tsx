@@ -1,4 +1,4 @@
-import { HStack } from "@chakra-ui/react";
+import { HStack, Text } from "@chakra-ui/react";
 import Image from "next/image";
 import Icon from "../../images/folderIcon.png";
 
@@ -10,7 +10,7 @@ export const FolderIcon = ({ label }: FolderIconProps) => {
   return (
     <HStack>
       <Image width="40" height="40" src={Icon} alt="folderIcon" />
-      <p>{label}</p>
+      <Text fontSize="20">{label}</Text>
     </HStack>
   );
 };

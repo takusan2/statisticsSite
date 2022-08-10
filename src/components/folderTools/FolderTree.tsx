@@ -1,21 +1,23 @@
-import { Box, HStack, VStack } from "@chakra-ui/react";
+import { Accordion, Box } from "@chakra-ui/react";
 import { Hlink } from "../articleTools/Hlink";
+import { Branch } from "./Branch";
 import { FileIcon } from "./FileIcon";
-import { FolderIcon } from "./FolderIcon";
 
 export const FoldrTree = () => {
   return (
     <Box>
-      <HStack>
-        <FolderIcon label="統計学" />
-        <p>---</p>
-        <VStack align="left" position="relative" top="25px">
+      <Accordion defaultIndex={[0, 1]} allowMultiple>
+        <Branch label="統計学">
           <Hlink href="/tutorial">
-            <FileIcon label="正規分布" />
+            <FileIcon label="正規分布"></FileIcon>
           </Hlink>
-          <FileIcon label="（仮）" />
-        </VStack>
-      </HStack>
+        </Branch>
+        <Branch label="Python">
+          <Hlink href="/python/pandas/category">
+            <FileIcon label="Pandasのcategory型"></FileIcon>
+          </Hlink>
+        </Branch>
+      </Accordion>
     </Box>
   );
 };

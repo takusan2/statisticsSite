@@ -1,23 +1,23 @@
-import { Mark } from '@chakra-ui/react'
-import { useState } from 'react'
+import { Mark } from "@chakra-ui/react";
+import { useState } from "react";
 
 type MarkingProps = {
-  mode?: boolean
-  children: string
-}
+  mode?: boolean;
+  children: string;
+};
 export const Marking = ({ mode, children }: MarkingProps) => {
-  const [show, setShow] = useState(false)
+  const [show, setShow] = useState(false);
   const toggleSetShow = () => {
     if (mode === true) {
-      setShow(!show)
+      setShow(!show);
     }
-  }
-  let learnMode = show
+  };
+  let learnMode = show;
 
   if (mode === true && show == false) {
-    learnMode = false
+    learnMode = false;
   } else {
-    learnMode = true
+    learnMode = true;
   }
   return (
     <Mark
@@ -29,12 +29,12 @@ export const Marking = ({ mode, children }: MarkingProps) => {
       mx="1"
       borderRadius="5px"
       onClick={toggleSetShow}
-      _hover={{ cursor: 'pointer', color: 'red' }}
+      _hover={{ cursor: "pointer", color: "red" }}
     >
-      {learnMode ? children : '＊'.repeat(children.length)}
+      {learnMode ? children : "＊".repeat(children.length)}
     </Mark>
-  )
-}
+  );
+};
 
 // mode: false ならば　show:trueの時に true
 // mode: false ならば　show:trueの時に true

@@ -26,6 +26,7 @@ const Pages = () => {
           </Button>
         </Box>
       </HStack>
+
       <SubSection title="正規分布とは" />
       <MathJaxContext>
         平均 <Inline>{"\\(\\mu\\)"}</Inline> 、分散{" "}

@@ -11,10 +11,16 @@ type DefaultLayoutProps = {
 
 const DefaultLayout = ({ children }: DefaultLayoutProps) => {
   return (
-    <Box fontSize="20px" boxSizing="border-box" minH="0" h="auto">
+    <Box
+      overflowY="scroll"
+      h="auto"
+      boxSizing="border-box"
+      minH="100vh"
+      pb="100"
+    >
       <Head />
       <Header />
-      <Box overflowY="scroll" m="2%" pb="50">
+      <Box m="2%" h="auto" mb="10%">
         {children}
       </Box>
       <Footer />

@@ -4,7 +4,7 @@ export const Footer = () => {
   return (
     <Box
       bg="#61F0E8"
-      p="2"
+      pt="10"
       mt="1"
       position="absolute"
       bottom="0"

@@ -1,4 +1,4 @@
-import { Box } from "@chakra-ui/react";
+import { Box, Center } from "@chakra-ui/react";
 import { ReactNode } from "react";
 import { Footer } from "./Footer";
 import { Head } from "./Head";
@@ -18,12 +18,15 @@ const DefaultLayout = ({ children }: DefaultLayoutProps) => {
       minH="100vh"
       pb="100"
       fontSize="20px"
+      w="100%"
     >
       <Head />
       <Header />
-      <Box m="2%" h="auto" mb="10%">
-        {children}
-      </Box>
+      <Center>
+        <Box m="2%" h="auto" mb="10%" maxWidth="150vh">
+          {children}
+        </Box>
+      </Center>
       <Footer />
     </Box>
   );

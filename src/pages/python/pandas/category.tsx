@@ -5,11 +5,12 @@ import CodeBlock from "src/components/articleTools/Code/CodeBlock";
 import { Hlink } from "src/components/articleTools/Hlink";
 import { Marking } from "src/components/articleTools/Marking";
 import Section from "src/components/articleTools/Section";
+import SubSection from "src/components/articleTools/SubSection";
 import DefaultLayout from "src/components/DefaultLayout";
-import CategoryImage from "src/pages/python/pandas/images/category.png";
-import LabeledImage from "src/pages/python/pandas/images/label.png";
-import ObjectImage from "src/pages/python/pandas/images/object.png";
-import DataFrame1Image from "./images/DataFrame1.png";
+import CategoryImage from "src/images/pnadasImages/category.png";
+import DataFrame1Image from "src/images/pnadasImages/DataFrame1.png";
+import LabeledImage from "src/images/pnadasImages/label.png";
+import ObjectImage from "src/images/pnadasImages/object.png";
 
 const Code1 = `df = pd.DataFrame({
   "name":["Olivia", "Lily", "Oliver", "Noah", "Harry"],
@@ -27,8 +28,15 @@ const Code4 = `df["hobby"].astype("category").cat.codes`;
 const Pages = () => {
   return (
     <DefaultLayout>
-      <Section title="Pandas の category 型" />
-      pandasのcategory型について気になったので、少しまとめてみます。
+      <Section title="Pandas の category 型を利用したラベルエンコーディング" />
+      pandasのcategory型を利用したラベルエンコーディングについて気になったので少しまとめてみます。
+      <SubSection title="ラベルエンコーディングとは" />
+      <p>
+        カテゴリカルデータに対して、各カテゴリ(ラベル)に一意の数値を割り振るというものである。
+        <br />
+        実際には順序尺度・名義尺度を考慮してエンコーディングするべきだが、今回は考えないことにする。
+      </p>
+      <SubSection title="実装" />
       <p>まず、次のようなデータフレームを考える。</p>
       <CodeBlock language="python">{Code1}</CodeBlock>
       <Flex>
@@ -49,7 +57,7 @@ const Pages = () => {
         を用いて型を<Marking>category型</Marking>に変更する
       </p>
       <CodeBlock language="python">{Code3}</CodeBlock>
-      <Image width="500px" height="240px" src={CategoryImage} />
+      <Image width="490px" height="250px" src={CategoryImage} />
       <div>
         dtype=categoryに変わっているだけでなく、object型のときにはなかった情報が
         増えている。

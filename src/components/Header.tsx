@@ -1,8 +1,8 @@
-import { Flex, Spacer } from '@chakra-ui/react'
-import Image from 'next/image'
+import { Flex, Spacer } from "@chakra-ui/react";
+import Image from "next/image";
 
-import Logo from '../images/yuzurihaLogo.png'
-import MenuBar from './MenuBer'
+import Logo from "../images/yuzurihaLogo.png";
+import MenuBar from "./MenuBer";
 
 const Header = () => {
   return (
@@ -13,7 +13,7 @@ const Header = () => {
         <MenuBar />
       </Flex>
     </>
-  )
-}
+  );
+};
 
-export default Header
+export default Header;

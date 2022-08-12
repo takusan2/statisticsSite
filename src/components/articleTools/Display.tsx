@@ -1,4 +1,4 @@
-import { Flex } from "@chakra-ui/react";
+import { Container } from "@chakra-ui/react";
 import { MathJax } from "better-react-mathjax";
 import { ReactNode } from "react";
 
@@ -8,8 +8,8 @@ type DisplayProps = {
 
 export const Display = ({ children }: DisplayProps) => {
   return (
-    <Flex fontSize="15" overflowX="scroll" p="3" minW="0">
+    <Container fontSize="20" overflowX="scroll" m="3">
       <MathJax>{children}</MathJax>
-    </Flex>
+    </Container>
   );
 };

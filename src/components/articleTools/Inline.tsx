@@ -1,15 +1,10 @@
-import { MathJax } from 'better-react-mathjax'
-import { ReactNode } from 'react'
+import { MathJax } from "better-react-mathjax";
+import { ReactNode } from "react";
 
 type InlineProps = {
-  children: ReactNode
-}
+  children: ReactNode;
+};
 
 export const Inline = ({ children }: InlineProps) => {
-  return (
-    <>
-      {' '}
-      <MathJax inline>{children}</MathJax>{' '}
-    </>
-  )
-}
+  return <MathJax inline>{children}</MathJax>;
+};

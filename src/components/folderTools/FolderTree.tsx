@@ -1,4 +1,4 @@
-import { Accordion, Box } from "@chakra-ui/react";
+import { Accordion, Box, VStack } from "@chakra-ui/react";
 import { Hlink } from "../articleTools/Hlink";
 import { Branch } from "./Branch";
 import { FileIcon } from "./FileIcon";
@@ -22,12 +22,14 @@ export const FoldrTree = () => {
         </Branch>
         <Branch label="機械学習">
           <Branch label="決定木">
-            <Hlink href="/machine_learning/decision_tree/tutorial">
-              <FileIcon label="決定木を理解しよう" />
-            </Hlink>
-            <Hlink href="/machine_learning/decision_tree/id3_algorythm">
-              <FileIcon label="ID3アルゴリズムを理解しよう" />
-            </Hlink>
+            <VStack align="left">
+              <Hlink href="/machine_learning/decision_tree/tutorial">
+                <FileIcon label="決定木を理解しよう" />
+              </Hlink>
+              <Hlink href="/machine_learning/decision_tree/id3_algorythm">
+                <FileIcon label="ID3アルゴリズムを理解しよう" />
+              </Hlink>
+            </VStack>
           </Branch>
         </Branch>
       </Accordion>

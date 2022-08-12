@@ -1,4 +1,4 @@
-import { Mark } from "@chakra-ui/react";
+import { Box, Mark } from "@chakra-ui/react";
 import { useState } from "react";
 
 type MarkingProps = {
@@ -20,20 +20,21 @@ export const Marking = ({ mode, children }: MarkingProps) => {
     learnMode = true;
   }
   return (
-    <Mark
-      bg="#dce5ff"
-      color="tomato"
-      px="2"
-      fontWeight="bold"
-      py="1"
-      mx="1"
-      borderRadius="5px"
-      onClick={toggleSetShow}
-      display="inline-block"
-      _hover={{ cursor: "pointer", color: "red" }}
-    >
-      {learnMode ? children : "＊".repeat(children.length)}
-    </Mark>
+    <Box overflowX="scroll">
+      <Mark
+        bg="#dce5ff"
+        color="tomato"
+        px="2"
+        fontWeight="bold"
+        py="1"
+        mx="1"
+        borderRadius="5px"
+        onClick={toggleSetShow}
+        _hover={{ cursor: "pointer", color: "red" }}
+      >
+        {learnMode ? children : "＊".repeat(children.length)}
+      </Mark>
+    </Box>
   );
 };
 

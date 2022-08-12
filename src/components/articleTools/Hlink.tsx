@@ -8,7 +8,7 @@ type HlinkProps = {
 
 export const Hlink = ({ href, children }: HlinkProps) => {
   return (
-    <Link color="teal.500" href={href}>
+    <Link display="inline-block" color="teal.500" href={href}>
       {children}
     </Link>
   );

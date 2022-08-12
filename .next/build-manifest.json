@@ -15,11 +15,6 @@
   ],
   "rootMainFiles": [],
   "pages": {
-    "/": [
-      "static/chunks/webpack.js",
-      "static/chunks/main.js",
-      "static/chunks/pages/index.js"
-    ],
     "/_app": [
       "static/chunks/webpack.js",
       "static/chunks/main.js",
@@ -30,10 +25,15 @@
       "static/chunks/main.js",
       "static/chunks/pages/_error.js"
     ],
-    "/machineLearning/algorythm/decisionTree": [
+    "/machine_learning/decision_tree/id3_algorythm": [
       "static/chunks/webpack.js",
       "static/chunks/main.js",
-      "static/chunks/pages/machineLearning/algorythm/decisionTree.js"
+      "static/chunks/pages/machine_learning/decision_tree/id3_algorythm.js"
+    ],
+    "/tutorial": [
+      "static/chunks/webpack.js",
+      "static/chunks/main.js",
+      "static/chunks/pages/tutorial.js"
     ]
   },
   "ampFirstPages": []

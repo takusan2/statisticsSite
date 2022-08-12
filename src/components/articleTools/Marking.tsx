@@ -29,6 +29,7 @@ export const Marking = ({ mode, children }: MarkingProps) => {
       mx="1"
       borderRadius="5px"
       onClick={toggleSetShow}
+      display="inline-block"
       _hover={{ cursor: "pointer", color: "red" }}
     >
       {learnMode ? children : "＊".repeat(children.length)}

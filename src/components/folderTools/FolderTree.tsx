@@ -6,7 +6,7 @@ import { FileIcon } from "./FileIcon";
 export const FoldrTree = () => {
   return (
     <Box>
-      <Accordion defaultIndex={[0, 1, 2, 3]} allowMultiple>
+      <Accordion defaultIndex={[0, 1, 2, 3, 4, 5]} allowMultiple>
         <Branch label="統計学">
           <Hlink href="/tutorial">
             <FileIcon label="正規分布"></FileIcon>
@@ -21,9 +21,12 @@ export const FoldrTree = () => {
           <Branch label="Matplotlib">仮</Branch>
         </Branch>
         <Branch label="機械学習">
-          <Branch label="アルゴリズム">
-            <Hlink href="/machineLearning/algorythm/decisionTree">
-              <FileIcon label="決定木のアルゴリズムを理解しよう！" />
+          <Branch label="決定木">
+            <Hlink href="/machine_learning/decision_tree/tutorial">
+              <FileIcon label="決定木を理解しよう" />
+            </Hlink>
+            <Hlink href="/machine_learning/decision_tree/id3_algorythm">
+              <FileIcon label="ID3アルゴリズムを理解しよう" />
             </Hlink>
           </Branch>
         </Branch>

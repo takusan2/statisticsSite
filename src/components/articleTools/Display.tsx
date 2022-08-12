@@ -1,15 +1,15 @@
-import { Box } from '@chakra-ui/react'
-import { MathJax } from 'better-react-mathjax'
-import { ReactNode } from 'react'
+import { Flex } from "@chakra-ui/react";
+import { MathJax } from "better-react-mathjax";
+import { ReactNode } from "react";
 
 type DisplayProps = {
-  children: ReactNode
-}
+  children: ReactNode;
+};
 
 export const Display = ({ children }: DisplayProps) => {
   return (
-    <Box p="3">
+    <Flex fontSize="15" overflowX="scroll" p="3" minW="0">
       <MathJax>{children}</MathJax>
-    </Box>
-  )
-}
+    </Flex>
+  );
+};

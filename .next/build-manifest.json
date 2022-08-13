@@ -25,11 +25,6 @@
       "static/chunks/main.js",
       "static/chunks/pages/_error.js"
     ],
-    "/machine_learning/decision_tree/id3_algorythm": [
-      "static/chunks/webpack.js",
-      "static/chunks/main.js",
-      "static/chunks/pages/machine_learning/decision_tree/id3_algorythm.js"
-    ],
     "/python/pandas/category": [
       "static/chunks/webpack.js",
       "static/chunks/main.js",

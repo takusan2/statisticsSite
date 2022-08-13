@@ -7,7 +7,7 @@ type CodeBlockProps = {
   language: string;
 };
 
-export const CodeBlock = ({ children, language }: CodeBlockProps) => {
+const CodeBlock = ({ children, language }: CodeBlockProps) => {
   return (
     <Box w="auto" fontSize="20px">
       <SyntaxHighlighter language={language} style={dark}>

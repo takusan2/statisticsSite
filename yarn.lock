@@ -1051,7 +1051,7 @@
 
 "@types/react-syntax-highlighter@^15.5.4":
   version "15.5.4"
-  resolved "https://registry.npmjs.org/@types/react-syntax-highlighter/-/react-syntax-highlighter-15.5.4.tgz"
+  resolved "https://registry.yarnpkg.com/@types/react-syntax-highlighter/-/react-syntax-highlighter-15.5.4.tgz#c76dd9cab769484bb7360849074eb340421183ca"
   integrity sha512-GYXA4nRBG4jTGFfYMLO2/yuqyOyaQ415oeJWw6akE5gipOEsGhvXFvWhsctGVMHzAfRI7e/J0B9cpqrfMOwZhA==
   dependencies:
     "@types/react" "*"

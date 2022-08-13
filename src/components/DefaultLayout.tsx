@@ -1,4 +1,5 @@
 import { Box, Container } from "@chakra-ui/react";
+import { MathJaxContext } from "better-react-mathjax";
 import { ReactNode } from "react";
 import { Footer } from "./Footer";
 import { Head } from "./Head";
@@ -22,7 +23,7 @@ const DefaultLayout = ({ children }: DefaultLayoutProps) => {
       <Header />
       <Container maxWidth="150vh">
         <Box h="auto" mb="10%">
-          {children}
+          <MathJaxContext>{children}</MathJaxContext>
         </Box>
       </Container>
 

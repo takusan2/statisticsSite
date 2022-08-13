@@ -1,4 +1,4 @@
-import { Box, Mark } from "@chakra-ui/react";
+import { Badge, Box } from "@chakra-ui/react";
 import { useState } from "react";
 
 type MarkingProps = {
@@ -20,20 +20,21 @@ export const Marking = ({ mode, children }: MarkingProps) => {
     learnMode = true;
   }
   return (
-    <Box overflowX="scroll">
-      <Mark
+    <Box display="inline-block">
+      <Badge
         bg="#dce5ff"
         color="tomato"
-        px="2"
-        fontWeight="bold"
-        py="1"
+        overflowX="scroll"
         mx="1"
+        fontWeight="bold"
+        py="0.1"
+        fontSize="18"
         borderRadius="5px"
         onClick={toggleSetShow}
         _hover={{ cursor: "pointer", color: "red" }}
       >
         {learnMode ? children : "＊".repeat(children.length)}
-      </Mark>
+      </Badge>
     </Box>
   );
 };

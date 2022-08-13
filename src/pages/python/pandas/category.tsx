@@ -1,4 +1,4 @@
-import { Flex, Text } from "@chakra-ui/react";
+import { Box, Flex } from "@chakra-ui/react";
 import Image from "next/image";
 
 import CodeBlock from "src/components/articleTools/Code/CodeBlock";
@@ -31,13 +31,13 @@ const Pages = () => {
       <Section title="Pandas の category 型を利用したラベルエンコーディング" />
       pandasのcategory型を利用したラベルエンコーディングについて気になったので少しまとめてみます。
       <SubSection title="ラベルエンコーディングとは" />
-      <p>
+      <Box>
         カテゴリカルデータに対して、各カテゴリ(ラベル)に一意の数値を割り振るというものである。
         <br />
         実際には順序尺度・名義尺度を考慮してエンコーディングするべきだが、今回は考えないことにする。
-      </p>
+      </Box>
       <SubSection title="実装" />
-      <p>まず、次のようなデータフレームを考える。</p>
+      <Box>まず、次のようなデータフレームを考える。</Box>
       <CodeBlock language="python">{Code1}</CodeBlock>
       <Flex>
         <Image
@@ -49,29 +49,25 @@ const Pages = () => {
       </Flex>
       <CodeBlock language="python">{Code2}</CodeBlock>
       <Image width="260px" height="200px" src={ObjectImage} />
-      <p>
+      <Box>
         このとき、hobbyをラベルエンコーディングしたいとする。その方法はたくさんあるが今回は
         category型を利用した方法を考える。現在、 hobbyの型は
         <Marking>object型</Marking>である。そこで、
         <Marking>astype("category")</Marking>
         を用いて型を<Marking>category型</Marking>に変更する
-      </p>
+      </Box>
       <CodeBlock language="python">{Code3}</CodeBlock>
       <Image width="490px" height="250px" src={CategoryImage} />
-      <div>
+      <Box>
         dtype=categoryに変わっているだけでなく、object型のときにはなかった情報が
         増えている。
-        <Text>
-          <Marking>Category(3, object):["piano", "socceer", "tennis"]</Marking>
-        </Text>
+        <Marking>Category(3, object):["piano", "socceer", "tennis"]</Marking>
         である。seriesでは二つあった要素piano、soccerが1つにまとめられていることがわかる。
-        <Text>
-          このようにして、dtypeをcategoryにしてから次のコードを書けばラベルエンコーディングできる。
-        </Text>
-      </div>
+        このようにして、dtypeをcategoryにしてから次のコードを書けばラベルエンコーディングできる。
+      </Box>
       <CodeBlock language="python">{Code4}</CodeBlock>
       <Image width="150" height="200" src={LabeledImage} />
-      <div>
+      <Box>
         category型のseriesに<Marking>cat.codes</Marking>
         を書くことで、カテゴリごとに数字が振られる。今回の場合は、pianoが0、soccerが1、tennisが2
         とラベルエンコーディングされたことになる。より詳しいことを知りたい方は
@@ -80,7 +76,7 @@ const Pages = () => {
         </Hlink>
         をぜひ読んでください。カテゴリカルデータに対する便利な処理が他にもあるみたいなので、
         筆者もすこしずつまとめていこうと思います。
-      </div>
+      </Box>
     </DefaultLayout>
   );
 };

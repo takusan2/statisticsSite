@@ -1,3 +1,4 @@
+import { Box } from "@chakra-ui/react";
 import CodeBlock from "src/components/articleTools/Code/CodeBlock";
 import Section from "src/components/articleTools/Section";
 import DefaultLayout from "src/components/DefaultLayout";
@@ -42,6 +43,7 @@ const Pages = () => {
   return (
     <DefaultLayout>
       <Section title="ID3の実装" />
+      <Box>ID3アルゴリズムをpythonで実装してみましょう。</Box>
       <CodeBlock language="python">{Code1}</CodeBlock>
     </DefaultLayout>
   );

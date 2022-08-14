@@ -15,13 +15,10 @@ import ObjectImage from "src/images/pnadasImages/object.png";
 const Code1 = `df = pd.DataFrame({
   "name":["Olivia", "Lily", "Oliver", "Noah", "Harry"],
   "hobby":["piano","tennis", "piano", "soccer", "soccer"]})
-df
-`;
-const Code2 = `df["hobby"]
-`;
+df`;
+const Code2 = `df["hobby"]`;
 
-const Code3 = `df["hobby"].astype("category")
-`;
+const Code3 = `df["hobby"].astype("category")`;
 
 const Code4 = `df["hobby"].astype("category").cat.codes`;
 

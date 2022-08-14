@@ -8,9 +8,12 @@ type CodeBlockProps = {
 
 const CodeBlock = ({ children, language }: CodeBlockProps) => {
   return (
-    <SyntaxHighlighter language={language} style={a11yDark}>
-      {children}
-    </SyntaxHighlighter>
+    <SyntaxHighlighter
+      language={language}
+      style={a11yDark}
+      children={children}
+      showLineNumbers
+    />
   );
 };
 

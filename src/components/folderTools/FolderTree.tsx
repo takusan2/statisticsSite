@@ -29,6 +29,9 @@ export const FoldrTree = () => {
               <Hlink href="/machine_learning/decision_tree/id3_algorythm">
                 <FileIcon label="ID3アルゴリズムを理解しよう" />
               </Hlink>
+              <Hlink href="/machine_learning/decision_tree/id3_with_python">
+                <FileIcon label="ID3を実装しよう" />
+              </Hlink>
             </VStack>
           </Branch>
         </Branch>

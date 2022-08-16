@@ -246,7 +246,13 @@ const Pages = () => {
   return (
     <DefaultLayout>
       <Section title="ID3の実装" />
-      <Box>ID3アルゴリズムをpythonで実装してみましょう。</Box>
+      <Box>
+        ID3アルゴリズムをpythonで実装してみましょう。まだ、
+        <Hlink href="decision_tree/id3_algorythm">
+          ID3アルゴリズムを理解しよう
+        </Hlink>
+        を読んでいない方はこちらを先に読んだ方が理解しやすいと思います。
+      </Box>
       <SubSection title="ID3アルゴリズムの流れ" />
       <VStack align="center">
         <Image width="500" height="600" src={id3Process} />

@@ -3,6 +3,7 @@ import Image from "next/image";
 
 import CodeBlock from "src/components/articleTools/Code/CodeBlock";
 import { Hlink } from "src/components/articleTools/Hlink";
+import { Blue } from "src/components/articleTools/Marker";
 import { Marking } from "src/components/articleTools/Marking";
 import Section from "src/components/articleTools/Section";
 import SubSection from "src/components/articleTools/SubSection";
@@ -58,7 +59,7 @@ const Pages = () => {
       <Box>
         dtype=categoryに変わっているだけでなく、object型のときにはなかった情報が
         増えている。
-        <Marking>Category(3, object):["piano", "socceer", "tennis"]</Marking>
+        <Blue>Category(3, object):["piano", "socceer", "tennis"]</Blue>
         である。seriesでは二つあった要素piano、soccerが1つにまとめられていることがわかる。
         このようにして、dtypeをcategoryにしてから次のコードを書けばラベルエンコーディングできる。
       </Box>

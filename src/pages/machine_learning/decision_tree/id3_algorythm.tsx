@@ -239,6 +239,19 @@ const Pages = () => {
           <FileIcon label="ID3アルゴリズムの実装" />
         </Hlink>
       </Box>
+      <SubSection title="参考資料" />
+      <UnorderedList>
+        <ListItem>
+          <Hlink href="https://fussy.web.fc2.com/algo/pattern7_dt.htm">
+            パターン認識
+          </Hlink>
+        </ListItem>
+        <ListItem>
+          <Hlink href="https://ocw.hokudai.ac.jp/wp-content/uploads/2016/01/IntelligentInformationProcessing-2005-Note-11.pdf">
+            決定木の学習
+          </Hlink>
+        </ListItem>
+      </UnorderedList>
     </DefaultLayout>
   );
 };

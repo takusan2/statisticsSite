@@ -8,7 +8,9 @@ type FileIconProps = {
 export const FileIcon = ({ label }: FileIconProps) => {
   return (
     <HStack>
-      <Image src={Icon} width="35" height="40" layout="fixed" />
+      <Box>
+        <Image src={Icon} width="35" height="40" layout="fixed" />
+      </Box>
       <Box>{label}</Box>
     </HStack>
   );

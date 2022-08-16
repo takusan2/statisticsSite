@@ -23,9 +23,7 @@ export const FoldrTree = () => {
         <Branch label="機械学習">
           <Branch label="決定木">
             <VStack align="left">
-              <Hlink href="/machine_learning/decision_tree/tutorial">
-                <FileIcon label="決定木を理解しよう" />
-              </Hlink>
+              <FileIcon label="決定木を理解しよう （準備中）" />
               <Hlink href="/machine_learning/decision_tree/id3_algorythm">
                 <FileIcon label="ID3アルゴリズムを理解しよう" />
               </Hlink>

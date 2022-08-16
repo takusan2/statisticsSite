@@ -1,4 +1,4 @@
-import { Box, VStack } from "@chakra-ui/react";
+import { Box, ListItem, UnorderedList, VStack } from "@chakra-ui/react";
 import Image from "next/image";
 import CodeBlock from "src/components/articleTools/Code/CodeBlock";
 import { Display } from "src/components/articleTools/Display";
@@ -435,6 +435,20 @@ const Pages = () => {
       HighならばクラスラベルはNo、NormalならばYesとなりました。Rainも同様に結果がでています。
       Overcastは1回目の分岐で同じクラスしかいないグループに分岐したため、
       すぐにクラスラベルが出ています。
+      <SubSection title="参考資料" />
+      <UnorderedList>
+        <ListItem>
+          <Hlink href="https://towardsdatascience.com/id3-decision-tree-classifier-from-scratch-in-python-b38ef145fd90">
+            ID3 Decision Tree Classifier from scratch in Python
+          </Hlink>
+        </ListItem>
+        <ListItem>
+          <Hlink href="https://medium.com/geekculture/step-by-step-decision-tree-id3-algorithm-from-scratch-in-python-no-fancy-library-4822bbfdd88f">
+            Step by Step Decision Tree: ID3 Algorithm From Scratch in Python [No
+            Fancy Library]
+          </Hlink>
+        </ListItem>
+      </UnorderedList>
     </DefaultLayout>
   );
 };

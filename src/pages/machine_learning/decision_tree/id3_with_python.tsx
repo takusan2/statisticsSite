@@ -10,6 +10,7 @@ import Section from "src/components/articleTools/Section";
 import SubSection from "src/components/articleTools/SubSection";
 import SubSubSection from "src/components/articleTools/SubSubSection";
 import DefaultLayout from "src/components/DefaultLayout";
+import { FileIcon } from "src/components/folderTools/FileIcon";
 import DataFrame from "src/images/machinLearning/DecisionTree/DataFramePlayTennis.png";
 import id3Process from "src/images/machinLearning/DecisionTree/Id3Process.png";
 
@@ -247,11 +248,11 @@ const Pages = () => {
     <DefaultLayout>
       <Section title="ID3の実装" />
       <Box>
-        ID3アルゴリズムをpythonで実装してみましょう。まだ、
-        <Hlink href="decision_tree/id3_algorythm">
-          ID3アルゴリズムを理解しよう
-        </Hlink>
-        を読んでいない方はこちらを先に読んだ方が理解しやすいと思います。
+        ID3アルゴリズムをpythonで実装してみましょう。まだ、 「
+        <Hlink href="id3_algorythm">ID3アルゴリズムを理解しよう</Hlink>」
+        を読んでいない方はこちらを先に読んだ方が理解しやすいと思います。また、コードの解説を書いていますが、
+        コードを見た方がわかりやすいという方はコードの解説は飛ばして問題ないと思います。何をしているかわからない時は
+        コードの解説を利用してください。
       </Box>
       <SubSection title="ID3アルゴリズムの流れ" />
       <VStack align="center">
@@ -449,6 +450,10 @@ const Pages = () => {
           </Hlink>
         </ListItem>
       </UnorderedList>
+      <SubSection title="関連記事" />
+      <Hlink href="id3_algorythm">
+        <FileIcon label="ID3アルゴリズムを理解しよう" />
+      </Hlink>
     </DefaultLayout>
   );
 };

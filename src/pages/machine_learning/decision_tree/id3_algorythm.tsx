@@ -235,9 +235,6 @@ const Pages = () => {
         女性で10代のノードの親のノードの教師信号はいちごが9個、りんごが1個、バナナが0個なので多数決を取れば
         いちごが勝ちますね。なので、女性で10代のノードはいちごに分類されます。ID3の解説はここまでにします。
         pythonによる実装はこちらの記事に記載しています。
-        <Hlink href="id3_with_python">
-          <FileIcon label="ID3アルゴリズムの実装" />
-        </Hlink>
       </Box>
       <SubSection title="参考資料" />
       <UnorderedList>
@@ -252,6 +249,10 @@ const Pages = () => {
           </Hlink>
         </ListItem>
       </UnorderedList>
+      <SubSection title="関連記事" />
+      <Hlink href="id3_with_python">
+        <FileIcon label="ID3アルゴリズムの実装" />
+      </Hlink>
     </DefaultLayout>
   );
 };

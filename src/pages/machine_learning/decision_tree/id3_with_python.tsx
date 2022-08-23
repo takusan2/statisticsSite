@@ -36,7 +36,7 @@ const Code1 = `def entropy(train, labels):
     class_list = labels.unique()
     entro = 0
 
-    # クラスラベルの属性ごとにを計算する
+    # クラスラベルのカテゴリごとにを計算する
     for clas in class_list:
         # そのクラスのデータの数
         num_of_class_elem = train[labels == clas].shape[0]
@@ -65,25 +65,25 @@ const Code2 = `def expected_entropy(train, labels, feature):
     expected_entro : エントロピーの期待値(float) 
     ---------------------------
     '''
-    feature_value_list = train[feature].unique().tolist()
+    category_list = train[feature].unique().tolist()
     num_of_data = train.shape[0]
     expected_entro = 0
 
 
-    for feature_value in feature_value_list: # 特徴量の属性ごとに計算(分岐先ごとに計算)
-        # その属性のみのデータ
-        mask = train[feature] == feature_value
-        feature_value_data = train[mask]
-        if feature_value_data.shape[0] == 0:
+    for category in category_list: # 特徴量のカテゴリごとに計算(分岐先ごとに計算)
+        # そのカテゴリのみのデータ
+        mask = train[feature] == category
+        data_in_category = train[mask]
+        if data_in_category.shape[0] == 0:
             continue
-        # その属性に対応するクラスラベル
-        feature_value_labels = labels[mask]
-        # その属性の確率（その属性のデータ数/教師データ数）
-        feature_value_prob = feature_value_data.shape[0] / train.shape[0]
+        # そのカテゴリに対応するクラスラベル
+        labels_in_category = labels[mask]
+        # そのカテゴリの確率（その属性のデータ数/教師データ数）
+        category_prov = data_in_category.shape[0] / train.shape[0]
         # エントロピーの計算
-        entro = entropy(feature_value_data, feature_value_labels)
+        entro = entropy(data_in_category, labels_in_category)
         # 重み付けしたエントロピーを対していく
-        expected_entro +=  feature_value_prob * entro
+        expected_entro +=  category_prov * entro
 
     return (expected_entro)`;
 
@@ -135,25 +135,25 @@ const Code4 = `def generate_subtree(train, labels, feature):
     ---------------------------
     '''
 
-    feature_value_count_dict = train[feature].value_counts()
+    category_count_dict = train[feature].value_counts()
     tree = {} # 部分木もしくはノードが格納される
     class_list = labels.unique()
 
-    for feature_value, count in feature_value_count_dict.items(): # 特徴量の属性とそれぞれの数をセットでまわす
+    for category, count in category_count_dict.items(): # 特徴量の属性とそれぞれの数をセットでまわす
         # その属性だけのデータ
-        mask = train[feature] == feature_value
-        feature_value_data = train[mask]
+        mask = train[feature] == category
+        data_in_category = train[mask]
 
         assigned_to_terminal_node = False # 終端ノードとしたかのフラグ
         for clas in class_list:
-            num_of_class_elem = feature_value_data[labels == clas].shape[0]
+            num_of_class_elem = data_in_category[labels == clas].shape[0]
 
             if num_of_class_elem == count: # データがすべて同じクラスに属するならば
-                tree[feature_value] = clas # クラスラベルを登録し終端ノードとする
+                tree[category] = clas # クラスラベルを登録し終端ノードとする
                 assigned_to_terminal_node = True
 
         if not assigned_to_terminal_node:
-            tree[feature_value] = "?" # 後に続くので一旦 "?" としておく。
+            tree[category] = "?" # 後に続くので一旦 "?" としておく。
 
     return tree`;
 
@@ -193,16 +193,16 @@ const Code5 = `def make_tree(train, labels, prev_labels, feature_list):
     # 一度分岐に用いた特徴量は特徴量のリストから削除する
     feature_list.remove(max_info_feature)
 
-    for feature_value, clas in subtree.items():
+    for category, clas in subtree.items():
         if clas == "?":
-            mask = train[max_info_feature] == feature_value
+            mask = train[max_info_feature] == category
             mask_train = train[mask]
             mask_labels = labels[mask]
             # 分岐後のデータを用いてmake_treeを再帰的に呼び出す
-            root[max_info_feature][feature_value] = make_tree(mask_train, mask_labels, feature_list)
+            root[max_info_feature][category] = make_tree(mask_train, mask_labels, feature_list)
         else: # クラスが ? でないとき、すなわち、答えが決まっているとき
             # クラスを登録する。
-            root[max_info_feature][feature_value] = clas
+            root[max_info_feature][category] = clas
     return root`;
 
 const Code6 = `def ID3(train, labels):
@@ -248,7 +248,8 @@ const Pages = () => {
     <DefaultLayout>
       <Section title="ID3の実装" />
       <Box>
-        ID3アルゴリズムをpythonで実装してみましょう。まだ、 「
+        ID3アルゴリズムをpythonで実装してみましょう。クラスで作っていく方法もありますが、今回は関数のみで
+        実装していきます。まだ、 「
         <Hlink href="id3_algorythm">ID3アルゴリズムを理解しよう</Hlink>」
         を読んでいない方はこちらを先に読んだ方が理解しやすいと思います。また、コードの解説を書いていますが、
         コードを見た方がわかりやすいという方はコードの解説は飛ばして問題ないと思います。何をしているかわからない時は
@@ -300,23 +301,22 @@ const Pages = () => {
       関数を使います。
       <SubSubSection title="コードの解説" />
       まず<Blue>17行目</Blue>で、渡された特徴量に含まれる属性をuniqueを用いて
-      <Marking>feature_value_list</Marking>に代入します。そして、先ほどと同様に
+      <Marking>category_list</Marking>に代入します。そして、先ほどと同様に
       データ数をnum_of_dataに代入し、最終的な返り値である
       <Marking>エントロピーの期待値</Marking>を
       <Marking>expected_entro=0</Marking>
       として定義しておきます。次に、属性ごとに
-      エントロピーとその属性の確率(推定値)を求めていくために、for文でfeature_value_listを
+      エントロピーとその属性の確率(推定値)を求めていくために、for文でcategory_listを
       回していきます。<Blue>24行目</Blue>でその属性のみのデータを抽出するために
       <Marking>mask</Marking>を定義します。それを利用して
-      <Marking>feature_value_data</Marking>
-      を定義します。feature_value_dataが0の場合は計算する必要がないので、
+      <Marking>data_in_category</Marking>
+      を定義します。data_in_categoryが0の場合は計算する必要がないので、
       <Blue>25,26行目</Blue>で、if文を用いてcontinueで飛ばします。
       <Blue>28行目</Blue>
-      ではfeautre_value_dataと同様にmaskを利用してlabelsから
-      <Marking>feature_value_labelsを</Marking>
-      定義します。次に
+      ではdata_in_categoryと同様にmaskを利用してlabelsから
+      <Marking>labels_in_category</Marking>を 定義します。次に
       <Blue>30行目</Blue>で期待値を求めるための確率を
-      <Marking>feautre_value_prob</Marking>に代入し、
+      <Marking>category_prob</Marking>に代入し、
       <Blue>32行目</Blue>でエントロピーを<Marking>entro</Marking>に代入します。
       最後に<Blue>34行目</Blue>でエントロピーを確率で重み付けし、
       <Marking>expected_entro</Marking>
@@ -366,14 +366,14 @@ const Pages = () => {
       <Blue>18行目</Blue>では今回returnする<Marking>tree</Marking>を
       空の辞書を代入して定義します。class_listにはlabels.unique()を用いてクラス名を代入しています。
       <br />
-      そして、feature_value_count_dictをitems()を用いてfor文で回します。
-      <Marking>feature_value</Marking>には属性が、<Marking>count</Marking>
-      にはその属性のデータ数が渡されます。
+      そして、category_count_dictをitems()を用いてfor文で回します。
+      <Marking>category</Marking>にはカテゴリが、<Marking>count</Marking>
+      にはそのカテゴリのデータ数が渡されます。
       <Blue>30行目</Blue>
       で子ノードのクラスラベルが全ての同じ場合とそうでない場合で条件分岐します。
-      すべて同じ場合は、クラスラベルが決定するので、その属性をkey、クラスラベルをvalueとし、
+      すべて同じ場合は、クラスラベルが決定するので、そのカテゴリをkey、クラスラベルをvalueとし、
       辞書に記録します。そうでない場合は、まだ分岐の可能性があるので、この時点では？というクラスラベルをつけておきます。
-      こうしてfor文を抜けると、属性ごとにクラスラベルがついた、辞書が返されます。
+      こうしてfor文を抜けると、カテゴリごとにクラスラベルがついた、辞書が返されます。
       <CodeBlock language="python">{Code4}</CodeBlock>
       <SubSubSection title="出力" />
       <CodeBlock language="python">{output1}</CodeBlock>
@@ -393,25 +393,25 @@ const Pages = () => {
       これはルートノードもしくは親ノードだと考えてください。
       <Blue>27行目で</Blue>分岐に用いる特徴量を定義してから、<Blue>30行目</Blue>
       でルートノード(親ノード)に特徴量をkey、空の辞書をvalueとして記録します。この空の辞書に、
-      属性とそのラベルを追加していきます。次に、<Marking>subtree</Marking>
+      カテゴリとそのラベルを追加していきます。次に、<Marking>subtree</Marking>
       にmax_info_featureを使用した部分木を代入しておきます。
       <Blue>35行目</Blue>でmax_info_featureをfaeture_listからremoveします。
       この理由は、親ノードが使用した特徴量は使う必要がなく、また、再帰の終了条件にも関わってくるからです。
       <br />
       いよいよfor文に入ります。生成した、部分木は辞書なのでitems()によりkeyとvalueをfor文で回すことができます。
-      このとき、<Marking>feature_value</Marking>には子ノードの属性
-      <Marking>clas</Marking>にはその属性のクラスラベル
+      このとき、<Marking>category</Marking>には子ノードのカテゴリ
+      <Marking>clas</Marking>にはそのカテゴリのクラスラベル
       が渡されます。generate_subtree関数のとこで述べたようにまだ分岐の可能性がある場合は
       ? というラベルをつけたので、それを利用して条件分岐します。
       <br />
       <Blue>38行目</Blue> : ?
-      の場合、train、labelをその属性だけのデータにするためにmaskを定義して、抽出します。
+      の場合、train、labelをそのカテゴリだけのデータにするためにmaskを定義して、抽出します。
       そのデータを使い<Marking>make_tree</Marking>を<Marking>再帰的</Marking>に
-      呼び出します。ここで重要なのがmake_treeの返り値をルートノードの特徴量の属性のkeyに登録する
+      呼び出します。ここで重要なのがmake_treeの返り値をルートノードの特徴量のカテゴリのkeyに登録する
       ということです。こうすることで木構造が構成されます。
       <br />
       <Blue>44行目</Blue> : ?
-      でない場合はクラスラベルが決まっているということなので、ルートノードの特徴量の属性のkeyにその
+      でない場合はクラスラベルが決まっているということなので、ルートノードの特徴量のカテゴリのkeyにその
       クラスを登録します。
       そして、再帰処理が終了したらtreeには木構造をした辞書が入っているのでreturnでtreeを返します。
       <CodeBlock language="python">{Code5}</CodeBlock>
@@ -429,9 +429,9 @@ const Pages = () => {
       <CodeBlock language="python">{Code7}</CodeBlock>
       これでは少しわかりづらいので見やすくすると
       <CodeBlock language="python">{Code8}</CodeBlock>
-      となります。最初の分岐に用いた特徴量はFeatureで、Featureによって、Sunny,
+      となります。最初の分岐に用いた特徴量はOutlookで、Outlookによって、Sunny,
       Rain,
-      Overcastの属性に分岐しました。そこからさらに、属性がSunnyのグループを特徴量Humidityで分岐した結果、
+      Overcastのカテゴリに分岐しました。そこからさらに、カテゴリがSunnyのグループを特徴量Humidityで分岐した結果、
       特徴量はまだ残っていますが、同じクラスしかいないグループに分けられたので、クラスラベルがついています。
       HighならばクラスラベルはNo、NormalならばYesとなりました。Rainも同様に結果がでています。
       Overcastは1回目の分岐で同じクラスしかいないグループに分岐したため、

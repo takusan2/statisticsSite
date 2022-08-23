@@ -1,6 +1,5 @@
 {
   "/_app": "pages/_app.js",
   "/_error": "pages/_error.js",
-  "/_document": "pages/_document.js",
-  "/machine_learning/decision_tree/id3_algorythm": "pages/machine_learning/decision_tree/id3_algorythm.js"
+  "/_document": "pages/_document.js"
 }
